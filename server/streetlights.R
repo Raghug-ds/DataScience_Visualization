@@ -33,7 +33,7 @@ output$mymap <- renderLeaflet({
       radius = ~ 10,
       popup = ~ Lumens,
       color = ~ heat.colors(stLight$Lumens),
-      group = "Without Districts"
+      group = "Streetlights"
     ) %>%
     #overlay district data
     addPolygons(
@@ -46,12 +46,12 @@ output$mymap <- renderLeaflet({
         weight = 3,
         bringToFront = TRUE,
       ),
-      group = "With Districts"
+      group = "Districts"
     ) 
   
   stmap %>% 
     addLayersControl(
-      overlayGroups= c("With Districts", "Without Districts"),
+      overlayGroups= c("Districts", "Streetlights"),
       options = layersControlOptions(collapsed = FALSE),
       position = "bottomright") %>%
     setView(-86.25, 41.68, zoom = 11.4)

@@ -5,11 +5,11 @@ tabPanel(h1("Neighborhood"),
              radioButtons(
                inputId = "parameter",
                label = "Select Facility Type",
-               choices = c("Facilites",
+               choices = c("Facilities",
                            "Parks",
                            "Schools",
                            "Abandoned Properties"),
-               selected = "Facilites"
+               selected = "Facilities"
              )# end check box
            ),
            mainPanel(leafletOutput("map"),

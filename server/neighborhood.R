@@ -3,7 +3,7 @@
 
 dataset <- eventReactive(input$parameter, {
   i <- input$parameter
-  if (i == "Facilites"){
+  if (i == "Facilities"){
     facilites.legend<-facilities.spatial$Type
     colorType <- colorFactor(palette = 'Set1', domain =facilities.spatial$Type)(facilities.spatial$Type)
     return(list(facilities.spatial, facilities_table,colorType,facilites.legend))
@@ -56,7 +56,7 @@ output$map <- renderLeaflet({
         weight = 2,
         bringToFront = TRUE
       ),
-      group = "With Districts"
+      group = "Districts"
     )
  
   myMap <-
@@ -68,12 +68,12 @@ output$map <- renderLeaflet({
       color = ~ dataset()[[3]], 
       fillOpacity = .6,
       radius = 6,
-      group = "Without Districts"
+      group = "Facilities"
     )
 
   myMap %>% 
     addLayersControl(
-      overlayGroups= c("With Districts", "Without Districts"),
+      overlayGroups= c("Districts", "Facilities"),
       options = layersControlOptions(collapsed = FALSE),
       position = "bottomright") %>%
      setView(-86.25, 41.68, zoom = 11.4)
